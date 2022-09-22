@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/" , async(req,res)=> {
   let perPage = Math.min(req.query.perPage,20) || 10;
   let page = req.query.page || 1;
-  let sort = req.query.sort || "_id";
+  let sort = req.query.sort || "year";
   let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let data = await PlaneModel
@@ -65,7 +65,7 @@ router.get("/year",async(req,res)=>{
 router.get("/search", async(req,res)=>{
   let perPage = Math.min(req.query.perPage,20) || 10;
   let page = req.query.page || 1;
-  let sort = req.query.sort || "_id";
+  let sort = req.query.sort || "year";
   let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let queryS = req.query.s;
@@ -85,7 +85,7 @@ router.get("/search", async(req,res)=>{
 router.get("/category/:catName", async(req,res)=>{
   let perPage = Math.min(req.query.perPage,20) || 10;
   let page = req.query.page || 1;
-  let sort = req.query.sort || "_id";
+  let sort = req.query.sort || "year";
   let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let cat = req.params.catName;
