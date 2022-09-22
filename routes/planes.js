@@ -150,12 +150,11 @@ router.put("/:idEdit", auth , async(req, res)=>{
   try{
     if(req.tokenData.role == "admin"){
       data = await PlaneModel.updateOne({_id:idEdit}, req.body)
-      res.json(data);
     }
     else{
       data = await PlaneModel.updateOne({_id:idEdit, user_id:req.tokenData._id}, req.body)
-      res.json(data);
     }
+    res.json(data);
   }
   catch{
     res.status(500).json({msg:"err", err})
