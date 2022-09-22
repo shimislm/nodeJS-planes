@@ -3,19 +3,19 @@ const {auth} = require("../middleware/auth");
 const {PlaneModel,validatePlane} = require("../models/plansModel")
 const router = express.Router();
 
-const perPage = Math.min(req.query.perPage,20) || 10;
-const page = req.query.page || 1;
-const sort = req.query.sort || "year";
-const reverse = req.query.reverse == "yes" ? -1 : 1;
 
 router.get("/" , async(req,res)=> {
+  let perPage = Math.min(req.query.perPage,20) || 10;
+  let page = req.query.page || 1;
+  let sort = req.query.sort || "year";
+  let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let data = await PlaneModel
     .find({})
     .limit(perPage)
     .skip((page - 1)*perPage)
     .sort({[sort]:reverse})
-    res.json(data); 
+    res.json(data);
   } 
   catch(err){
     console.log(err)
@@ -63,6 +63,10 @@ router.get("/year",async(req,res)=>{
 })
 
 router.get("/search", async(req,res)=>{
+  let perPage = Math.min(req.query.perPage,20) || 10;
+  let page = req.query.page || 1;
+  let sort = req.query.sort || "year";
+  let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let queryS = req.query.s;
     let searchReg = new RegExp(queryS,"i")
@@ -79,6 +83,10 @@ router.get("/search", async(req,res)=>{
   }
 })
 router.get("/category/:catName", async(req,res)=>{
+  let perPage = Math.min(req.query.perPage,20) || 10;
+  let page = req.query.page || 1;
+  let sort = req.query.sort || "year";
+  let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let cat = req.params.catName;
     let catReg = new RegExp(cat,"i")
