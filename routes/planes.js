@@ -15,7 +15,7 @@ router.get("/" , async(req,res)=> {
     .limit(perPage)
     .skip((page - 1)*perPage)
     .sort({[sort]:reverse})
-    res.json(data);
+    res.json(data); 
   } 
   catch(err){
     console.log(err)
