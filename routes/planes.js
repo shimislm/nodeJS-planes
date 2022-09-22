@@ -25,6 +25,8 @@ router.get("/" , async(req,res)=> {
 router.get("/year",async(req,res)=>{
   let perPage = Math.min(req.query.perPage,20)  || 10;
   let page = req.query.page || 1;
+  let sort = req.query.sort || "_id";
+  let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
       let min = req.query.min;
       let max = req.query.max;
@@ -32,18 +34,24 @@ router.get("/year",async(req,res)=>{
         let planes = await PlaneModel.find({$and:[{year:{$gte:min}},{year:{$lte:max}}]})
         .limit(perPage)
         .skip((page-1)*perPage)
+        .skip((page - 1)*perPage)
+        .sort({[sort]:reverse})
         res.json(planes);
       }
       else if(min){
         let planes = await PlaneModel.find({year:{$gte:min}})
         .limit(perPage)
         .skip((page-1)*perPage)
+        .skip((page - 1)*perPage)
+        .sort({[sort]:reverse})
         res.json(planes);
       }
       else if(max){
         let planes = await PlaneModel.find({year:{$lte:max}})
         .limit(perPage)
         .skip((page-1)*perPage)
+        .skip((page - 1)*perPage)
+        .sort({[sort]:reverse})
         res.json(planes);
       }
 
