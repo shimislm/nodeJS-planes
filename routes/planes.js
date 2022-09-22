@@ -63,12 +63,18 @@ router.get("/year",async(req,res)=>{
 })
 
 router.get("/search", async(req,res)=>{
+  let perPage = Math.min(req.query.perPage,20) || 10;
+  let page = req.query.page || 1;
+  let sort = req.query.sort || "_id";
+  let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let queryS = req.query.s;
     let searchReg = new RegExp(queryS,"i")
     let data = await PlaneModel.find({$or:[{name:searchReg}, {manufacturer:searchReg}]})
-    // {$and:[{year:{$gte:min}},{year:{$lte:max}}]}
-    .limit(50)
+    .find({})
+    .limit(perPage)
+    .skip((page - 1)*perPage)
+    .sort({[sort]:reverse})
     res.json(data);
   }
   catch(err){
@@ -77,11 +83,17 @@ router.get("/search", async(req,res)=>{
   }
 })
 router.get("/category/:catName", async(req,res)=>{
+  let perPage = Math.min(req.query.perPage,20) || 10;
+  let page = req.query.page || 1;
+  let sort = req.query.sort || "_id";
+  let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
     let cat = req.params.catName;
     let catReg = new RegExp(cat,"i")
     let data = await PlaneModel.find({category:catReg})
-    .limit(50)
+    .limit(perPage)
+    .skip((page - 1)*perPage)
+    .sort({[sort]:reverse})
     res.json(data);
   }
   catch(err){
