@@ -25,7 +25,7 @@ router.get("/" , async(req,res)=> {
 router.get("/year",async(req,res)=>{
   let perPage = Math.min(req.query.perPage,20)  || 10;
   let page = req.query.page || 1;
-  let sort = req.query.sort || "_id";
+  let sort = req.query.sort || "year";
   let reverse = req.query.reverse == "yes" ? -1 : 1;
   try{
       let min = req.query.min;
