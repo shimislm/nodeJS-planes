@@ -1,4 +1,6 @@
 table{
-    
     word-wrap: break-word;
+}
+span{
+    color: red;
 }
