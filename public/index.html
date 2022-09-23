@@ -44,7 +44,9 @@
                 <li>/planes?perPage=4</li>
                 <li>/planes?reverse= yes</li>
                 <li>/planes?sort=year</li>
-                <span>Note: You can use the above for all GET methods</span>
+                <span>Note: You can use the above for all GET methods<br></span>
+                <span>Note: You can also combined the above for multi filter option<br></span>
+                <span>(/planes?sort=year&reverse=yes&page=2)<br></span>
               </ol></td>
               <td></td>
               <td><ol>
@@ -65,14 +67,14 @@
               <td>GET</td>
               <td>/planes/category/{category name}</td>
               <td></td>
-              <td>Get a list of all the plane in fighter category, will present 10 results per page</td>
+              <td>Get a list of all the planes in selected category, will present 10 results per page</td>
             </tr>
             <tr>
               <td>GET</td>
               <td>/planes/year?min=1945&max=2001</td>
               <td></td>
-              <td>Get a list of all the planes year between 1945 and 2001, will present 10 results per page
-                (you can add only minimum year or maximum as well)
+              <td>Get a list of all the planes that manufactured between 1945 and 2001, will present 10 results per page
+                (you can add only minimum year or maximum as well<br><span>/planes/year?min=1945</span>)
               </td>
             </tr>
             <tr>
@@ -80,19 +82,17 @@
               <td>/planes</td>
               <td>
                 <pre>
-{ 
-"name": "A-10 Thunderbolt II",
-"manufacturer": "Fairchild Republic",
-"info": "The Fairchild Republic 
-       A-10 Thunderbolt ,
-"year": 1972,
-"category": "Close air support
-           attack aircraft",
-"img_url": "https://upload.jpg"
+{
+ "name": "Plane model name",
+ "manufacturer": "manufacturer",
+ "info": "model description ,
+ "year": yyyy,
+ "category": "Category name",
+ "img_url": "img adress"
 }
                   </pre>
               </td>
-              <td>Add a new car to the data base, You need a token for this query</td>
+              <td>Add a new plane to the data base, You need a token for this query</td>
             </tr>
             <tr>
               <td>PUT</td>
@@ -100,14 +100,12 @@
               <td>
                 <pre>
 {
-  "name": "A-10 Thunderbolt II",
-  "manufacturer": "Fairchild Republic",
-  "info": "The Fairchild Republic 
-         A-10 Thunderbolt ,
-  "year": 1972,
-  "category": "Close air support
-             attack aircraft",
-  "img_url": "https://upload.jpg"
+ "name": "Plane model name",
+ "manufacturer": "manufacturer",
+ "info": "model description ,
+ "year": yyyy,
+ "category": "Category name",
+ "img_url": "img adress"
 }
                   </pre>
               </td>
@@ -139,18 +137,19 @@
           <tbody>
             <td>GET</td>
             <td><ol>
-              <li>/planes?page=2</li>
-              <li>/planes?perPage=4</li>
-              <li>/planes?reverse= yes</li>
-              <li>/planes?sort=user id</li>
-              <span >Note: You can use the above for all GET methods</span>
+              <li>/users?page=2</li>
+              <li>/users?perPage=4</li>
+              <li>/users?reverse= yes</li>
+              <li>/users?sort=user id</li>
+              <span>Note: You can use the above for all GET methods<br></span>
+              <span>Note: You can also combined the above for multi filter option</span>
             </ol></td>
             <td></td>
             <td><ol>
-              <li>Get a list of all the plane, will present 10 results in page 2</li>
-              <li>Get a list of all the plane, will present 4 results in page</li>
-              <li>Get a list of all the plane, will present 10 results in page in reverse order (default sort=user id</li>
-              <li>Get a list of all the plane, will present 10 results in page, Defines what the list will be sorted by</li>
+              <li>Get a list of all the users, will present 10 results in page 2</li>
+              <li>Get a list of all the users, will present 4 results in page</li>
+              <li>Get a list of all the users, will present 10 results in page in reverse order (default sort=user id</li>
+              <li>Get a list of all the users, will present 10 results in page, Defines what the list will be sorted by</li>
             </ol>
           </td>
             <tr>
@@ -177,9 +176,12 @@
               <td>
                 <pre>
 {
-"name": "John John",
-"email": "johnjohn@moloka.com",
-"password": "john31kd3Fg8"
+"fullName": {
+  "firstName": "First name",
+  "lastName": "Last name"
+},
+"email": "example@example.com",
+"password": "example"
 }
                   </pre>
               </td>
@@ -191,8 +193,8 @@
               <td>
                 <pre>
 {
-"email": "johnjohn@moloka.com",
-"password": "john31kd3Fg8"
+"email": "example@example.com",
+"password": "example"
 }
                 </pre>
               </td>
