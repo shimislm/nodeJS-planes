@@ -1,12 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx' crossorigin='anonymous'>
+  <link rel="stylesheet" href="./css/index.css">
   <title>Document</title>
 </head>
+
 <body>
-  <h2>Hello To Planes And Games Documentation!</h2>
+  <header class="container-fluid">
+    <div class="container text-center">
+      <h1>Welcome to <span style="color: red;">Planes</span> API documentation</h1>
+    </div>
+  </header>
+  <hr>
+  <main class="container-fluid">
+    <div class="container">
+      <h2 class=""><span style="color: red;">Planes</span> Routes</h2>
+      <div class="text-start table-responsive-lg" style="overflow-x: auto;">
+        <table class="table table-striped table-hover table-secondary w-auto table-bordered table-sm">
+          <thead>
+            <th>Method</th>
+            <th>URL</th>
+            <th>Body</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td>/planes</td>
+              <td></td>
+              <td>Get a list of all the plane, will present 10 results per page</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><ol>
+                <li>/planes?page=2</li>
+                <li>/planes?perPage=4</li>
+                <li>/planes?revrese= yes</li>
+                <li>/planes?sort=year</li>
+                <span style="color: red;">Note: You can use the above for all GET methods</span>
+              </ol></td>
+              <td></td>
+              <td><ol>
+                <li>Get a list of all the plane, will present 10 results in page 2</li>
+                <li>Get a list of all the plane, will present 4 results in page</li>
+                <li>Get a list of all the plane, will present 10 results in page in reverse order (default sort=year</li>
+                <li>Get a list of all the plane, will present 10 results in page, Defines what the list will be sorted by</li>
+              </ol>
+            </td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/planes/search?s={keyword}</td>
+              <td></td>
+              <td>search for a plane or a plane description/info, will present 10 results per page</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/planes/category/{category name}</td>
+              <td></td>
+              <td>Get a list of all the plane in fighter category, will present 10 results per page</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/planes/year?min=1945&max=2001</td>
+              <td></td>
+              <td>Get a list of all the planes year between 1945 and 2001, will present 10 results per page</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/planes</td>
+              <td>
+                <pre>
+{ 
+"name": "A-10 Thunderbolt II",
+"manufacturer": "Fairchild Republic",
+"info": "The Fairchild Republic 
+       A-10 Thunderbolt ,
+"year": 1972,
+"category": "Close air support
+           attack aircraft",
+"img_url": "https://upload.jpg"
+}
+                  </pre>
+              </td>
+              <td>Add a new car to the data base, You need a token for this query</td>
+            </tr>
+            <tr>
+              <td>PUT</td>
+              <td>/planes/{_id}</td>
+              <td>
+                <pre>
+{
+  "name": "A-10 Thunderbolt II",
+  "manufacturer": "Fairchild Republic",
+  "info": "The Fairchild Republic 
+         A-10 Thunderbolt ,
+  "year": 1972,
+  "category": "Close air support
+             attack aircraft",
+  "img_url": "https://upload.jpg"
+}
+                  </pre>
+              </td>
+              <td>Update a plane in the data base, You need a token for this query
+                (only admin users alowed to modified other users entry)
+              </td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/planes/{_id}</td>
+              <td></td>
+              <td>Delete a plane from the data base, You need a token for this query
+                (only admin users alowed to delete other users entry)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2><span style="color: red;">Users</span> Routes</h2>
+      <div class="text-start table-responsive-lg" style="overflow-x: auto;">
+        <table class="table table-striped table-hover table-secondary w-auto table-bordered">
+          <thead class="bg-dark">
+            <th>Method</th>
+            <th>URL</th>
+            <th>Body</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+            <td>GET</td>
+            <td><ol>
+              <li>/planes?page=2</li>
+              <li>/planes?perPage=4</li>
+              <li>/planes?revrese= yes</li>
+              <li>/planes?sort=user id</li>
+              <span style="color: red;" >Note: You can use the above for all GET methods</span>
+            </ol></td>
+            <td></td>
+            <td><ol>
+              <li>Get a list of all the plane, will present 10 results in page 2</li>
+              <li>Get a list of all the plane, will present 4 results in page</li>
+              <li>Get a list of all the plane, will present 10 results in page in reverse order (default sort=user id</li>
+              <li>Get a list of all the plane, will present 10 results in page, Defines what the list will be sorted by</li>
+            </ol>
+          </td>
+            <tr>
+              <td>GET</td>
+              <td>/users</a></td>
+              <td></td>
+              <td>Get a list of all the users, will present 10 results per page,
+                You need a token for this query
+                (only for admins)
+              </td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/users/info</a></td>
+              <td></td>
+              <td>Get a user info,
+                You need a token for this query
+                (only for corrent user)
+              </td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/users</td>
+              <td>
+                <pre>
+{
+"name": "John John",
+"email": "johnjohn@moloka.com",
+"password": "john31kd3Fg8"
+}
+                  </pre>
+              </td>
+              <td>Add a new user to the data base</td>
+            </tr>
+            <tr>
+              <td>POST(login)</td>
+              <td>/users/login</td>
+              <td>
+                <pre>
+{
+"email": "johnjohn@moloka.com",
+"password": "john31kd3Fg8"
+}
+                </pre>
+              </td>
+              <td>User login, if the email and password are correct the server will respond with a token</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
 </body>
+
 </html>

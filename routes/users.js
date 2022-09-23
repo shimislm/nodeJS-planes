@@ -26,7 +26,8 @@ router.get("/userList",authAdmin, async (req, res) => {
 
 router.get('/info', auth ,  async(req, res) => {
     try {
-         let user = await UserModel.findOne({_id:req.tokenData._id}, {password:0})
+        
+        let user = await UserModel.findOne({_id:req.tokenData._id}, {password:0})
         res.json(user);
     } 
     catch (err) {
@@ -43,11 +44,11 @@ router.post('/login', async(req, res) => {
     try {
         let user = await UserModel.findOne({ email: req.body.email })
         if (!user) {
-            return res.status(401).json({ msg: "Password or email worng!!!" })
+            return res.status(401).json({ msg: "Password or email wrong!!!" })
         }
         let password = await bycrpt.compare(req.body.password, user.password);
         if (!password) {
-            return res.status(403).json({ msg: "Password or email worng!!!" })
+            return res.status(403).json({ msg: "Password or email wrong!!!" })
         }
         // return res.json({ msg: "You Logged in !!!" })
         let newToken= createToken(user._id, user.role);
