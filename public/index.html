@@ -42,11 +42,11 @@
               <td><ol>
                 <li>/planes?page=2</li>
                 <li>/planes?perPage=4</li>
-                <li>/planes?reverse= yes</li>
+                <li>/planes?reverse=yes</li>
                 <li>/planes?sort=year</li>
                 <span>Note: You can use the above for all GET methods<br></span>
                 <span>Note: You can also combined the above for multi filter option<br></span>
-                <span>(/planes?sort=year&reverse=yes&page=2)<br></span>
+                <span>(<a href="/planes?sort=year&reverse=yes&perPage=3">/planes?sort=year&reverse=yes&perPage=3</a>)<br></span>
               </ol></td>
               <td></td>
               <td><ol>
@@ -59,19 +59,22 @@
             </tr>
             <tr>
               <td>GET</td>
-              <td>/planes/search?s={keyword}</td>
+              <td>/planes/search?s={keyword(Name, Manufacturer, Info)}<br>
+                (<a href="/planes/search?s=F-16">/planes/search?s=F-16</a>)</td>
               <td></td>
               <td>search for a plane or a plane description/info, will present 10 results per page</td>
             </tr>
             <tr>
               <td>GET</td>
-              <td>/planes/category/{category name}</td>
+              <td>/planes/category/{category name}<br>
+                (<a href="/planes/category/fighter">/planes/category/fighter</a>)</td>
               <td></td>
               <td>Get a list of all the planes in selected category, will present 10 results per page</td>
             </tr>
             <tr>
               <td>GET</td>
-              <td>/planes/year?min=1945&max=2001</td>
+              <td>/planes/year?min={value}&max={value}<br>
+                (<a href="/planes/year?min=1945&max=2001">/planes/year?min=1945&max=2001</a>)</td>
               <td></td>
               <td>Get a list of all the planes that manufactured between 1945 and 2001, will present 10 results per page
                 (you can add only minimum year or maximum as well<br><span>/planes/year?min=1945</span>)

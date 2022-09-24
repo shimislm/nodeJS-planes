@@ -70,7 +70,7 @@ router.get("/search", async(req,res)=>{
   try{
     let queryS = req.query.s;
     let searchReg = new RegExp(queryS,"i")
-    let data = await PlaneModel.find({$or:[{name:searchReg}, {manufacturer:searchReg}]})
+    let data = await PlaneModel.find({$or:[{name:searchReg}, {manufacturer:searchReg},{info:searchReg}]})
     .find({})
     .limit(perPage)
     .skip((page - 1)*perPage)
