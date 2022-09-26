@@ -13,17 +13,28 @@
 </head>
 
 <body>
-  <header class="container-fluid">
-    <div class="container text-center">
+  <header>
+    <nav class="container d-flex justify-content-between align-items-center">
+        <ul class="list-unstyled d-flex">
+            <li><a href="https://github.com/shimislm/nodeJS-planes" target="_blank">View on Github</a></li>
+            <!-- <li><a href="">Render Website</a></li> -->
+        </ul>
+        <div class="logo col-6 text-end">
+          <img src="https://freesvg.org/img/aircraft.png" alt="aircrft" width="100px">
+      </div>
+    </nav>
+</header>
+  <strip class="container-fluid ">
+    <div class="container text-center shadow">
       <h1><i class="fa fa-plane" aria-hidden="true"></i> Welcome to <span ></i>Planes</span> API documentation <i class="fa fa-plane" aria-hidden="true"></i></h1>
     </div>
-  </header>
+  </strip>
   <hr>
   <main class="container-fluid">
     <div class="container">
-      <h2 class=""><span>Planes</span> Routes</h2>
+      <h2 class="shadow col-auto"><span>Planes</span> Routes</h2>
       <div class="text-start table-responsive-lg" style="overflow-x: auto;">
-        <table class="table table-striped table-hover table-secondary w-auto table-bordered table-sm">
+        <table class="table table-striped table-hover table-secondary w-auto table-bordered table-sm shadow">
           <thead>
             <th>Method</th>
             <th>URL</th>
@@ -128,9 +139,9 @@
         </table>
       </div>
 
-      <h2><span>Users</span> Routes</h2>
+      <h2 class="shadow"><span>Users</span> Routes</h2>
       <div class="text-start table-responsive-lg" style="overflow-x: auto;">
-        <table class="table table-striped table-hover table-secondary w-auto table-bordered">
+        <table class="table table-striped table-hover table-secondary w-auto table-bordered shadow">
           <thead class="bg-dark">
             <th>Method</th>
             <th>URL</th>
